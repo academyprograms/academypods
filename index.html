@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Select Your Pods</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="container">
+    <h2>Choose the number of pods:</h2>
+    <form onsubmit="handleSubmit(event)">
+      <select id="podSelector" required>
+        <option value="">-- Select --</option>
+        <option value="1">1 Pod ($499)</option>
+        <option value="2">2 Pods ($948) - $50 discount</option>
+        <option value="3">3 Pods ($1397) - $100 discount</option>
+        <option value="4">4 Pods ($1796) - $200 discount</option>
+      </select>
+      <br><br>
+      <input type="submit" value="Submit & Proceed to Payment">
+    </form>
+  </div>
+
+  <script>
+    function handleSubmit(event) {
+      event.preventDefault();
+      const quantity = document.getElementById("podSelector").value;
+      const links = {
+        1: "https://pathivy.myhelcim.com/hosted/?token=b9702bd04c41c132a78004&amount=499.00&amountHash=31c9ae73abd82f0028439aff75b2ebc49ce01e62c384b8814995dfcd7ec66f4e",
+        2: "https://pathivy.myhelcim.com/hosted/?token=861a8da4d370f103580efc&amount=948.00&amountHash=220a7d670388892e2339e32f93d9b07eff6cf01a1aa468196f8db3a97a6fccca",
+        3: "https://pathivy.myhelcim.com/hosted/?token=b34695d548ac1758f87989&amount=1397.00&amountHash=b198587b3491c73fa4b6002d0ebaa351bf0e15a2354664a8ddda1d3980f8ce87",
+        4: "https://pathivy.myhelcim.com/hosted/?token=afbd8af91856374b07c5da&amount=1796.00&amountHash=de3138c063813ddee061a43302d0fa85d127db2b81a6b58bb5bbfd2eee5bc878",
+      };
+      if (links[quantity]) {
+        window.location.href = links[quantity];
+      } else {
+        alert("Please select a valid quantity.");
+      }
+    }
+  </script>
+</body>
+</html>
